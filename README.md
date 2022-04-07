@@ -1,3 +1,3 @@
-# git_test
+# odinProject_study
 
 Hello Odin!
