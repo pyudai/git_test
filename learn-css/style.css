@@ -1,0 +1,42 @@
+/* 
+   --more specific will take precedence over less specific
+    specific selector : 
+    - child > parent
+    - id > class > type > * (universal selector)
+    - more class selectors
+
+   -- the last order in CSS file will take over, no matter what order in HTML file is.
+   
+   -- inline > import CSS file
+*/
+#parent {
+  color: red;
+}
+
+.child {
+  color: blue;
+}
+
+.warning {
+  color: yellow;
+}
+
+.alert {
+  color: red;
+}
+
+/* chain rule -- class="class second-class" */
+.class.second-class {
+  font-size: 12px;
+}
+
+/* parent=class child n th =second-class */
+.class .second-class {
+  font-size: 24px;
+}
+
+/* parent=class child 1st =second-class */
+.class > .second-class {
+  font-size: 50px;
+}
+

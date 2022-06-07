@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Home</title>
+
+    <!-- import CSS file -->
+    <link rel="stylesheet" href="style.css" />
+
+    <!-- Internal CSS : 
+        <style>
+            div {
+              color: white;
+              background-color: black;
+            }
+        
+            p {
+              color: red;
+            }
+        </style>
+    -->
+  </head>
+
+  <body>
+    <div id="parent">
+      <div class="child">test parent-child</div>
+    </div>
+
+    <div class="alert warning"> order test </div>
+
+    <div class="class">
+      <div class="second-class">
+        test
+        <div class="second-class">test1</div>
+      </div>
+    </div>
+
+    <div class="class">test2</div>
+    <div class="second-class">test3</div>
+    <div class="class second-class">test4</div>
+    
+    <!-- 
+        inline CSS : 
+    -->
+    <div style="color: white; background-color: black;" class="warning">Inline CSS</div>
+  </body>
+</html>
