@@ -1,0 +1,66 @@
+* {
+  background-color: beige;
+  margin: 1rem 5rem;
+}
+
+h1,
+h3,
+h4 {
+  background-color: burlywood;
+  color: black;
+  font-weight: bold;
+}
+
+h1 {
+  font-size: xx-large;
+  text-align: center;
+  padding: 1rem;
+}
+
+h3 {
+  font-size: x-large;
+  padding: 0.5rem 1rem;
+}
+
+h4 {
+  background-color: rgb(230, 199, 160);
+  font-size: large;
+  padding: 0.25rem 1rem;
+}
+
+a {
+  font-size: larger;
+  font-weight: 500;
+  color: chocolate;
+}
+
+img {
+  height: 250px;
+  width: auto;
+  display: block;
+  margin: auto;
+}
+
+.content {
+  font-size: large;
+  font-weight: 400;
+  color: rgb(16, 23, 23);
+}
+
+.content.firstpage {
+  margin: 3rem 12rem;
+}
+
+.home {
+  display: block;
+  text-align: center;
+  margin: 2rem;
+}
+
+.description {
+  font-size: medium;
+  font-weight: 400;
+  color: darkslategray;
+  text-align: center;
+  margin: 0rem 5rem;
+}
