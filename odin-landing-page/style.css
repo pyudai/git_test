@@ -192,6 +192,10 @@ a {
   text-decoration: none;
 }
 
+a:hover{
+  text-decoration: underline;
+}
+
 button,
 .action > .container {
   background-color: #3882f6;
@@ -202,6 +206,11 @@ button {
   font-weight: 500;
   border-style: none;
   border-radius: 8px;
+}
+
+button:hover{
+  color: #3882f6;
+  background: #f3f7fd;
 }
 
 .container > button {
