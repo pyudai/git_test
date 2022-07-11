@@ -1,15 +1,49 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title>Rock-Paper-Scissors</title>
-        <meta name="description" content="">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" href="">
-        <script src="script.js"></script>
-    </head>
-    <body>
-        
-    </body>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>Rock-Paper-Scissors</title>
+    <meta name="description" content="" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="style.css" />
+    <script src="script.js" defer></script>
+  </head>
+  <body>
+    <div id="content">
+      <div id="game-name">Rock Paper Scissors</div>
+      <div id="score-board">
+        <div class="score">
+          <div>You</div>
+          <div id="player">0</div>
+        </div>
+        <div id="line"></div>
+        <div class="score">
+          <div>Computer</div>
+          <div id="computer">0</div>
+        </div>
+      </div>
+      <div id="round-result">Choose Your Weapon</div>
+      <div id="elements">
+        <button onclick="playerSelect(this)">
+          <img src="img/rock.svg" />
+          <div>Rock</div>
+        </button>
+        <button onclick="playerSelect(this)">
+          <img src="img/paper.svg" />
+          <div>Paper</div>
+        </button>
+        <button onclick="playerSelect(this)">
+          <img src="img/scissors.svg" />
+          <div>Scissors</div>
+        </button>
+      </div>
+    </div>
+    <div id="footer">
+      <a href="https://github.com/pyudai/"
+        ><img src="img/github.svg" />
+        <div>Pyudai</div>
+      </a>
+    </div>
+  </body>
 </html>

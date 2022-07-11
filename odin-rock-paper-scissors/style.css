@@ -1,0 +1,175 @@
+@import url("https://fonts.googleapis.com/css2?family=Offside&display=swap");
+* {
+  font-family: "Offside", sans-serif;
+}
+
+body,
+#content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+body {
+  background-color: #fffbf1;
+  height: 100vh;
+  width: 100vw;
+
+  margin: 0px;
+  padding: 0px;
+}
+
+#content {
+  margin: 10vh 0;
+}
+
+#game-name {
+  font-size: 56px;
+  color: black;
+  background-color: #cbe9ff;
+  padding: 0.35em 0.5em;
+  border-radius: 0.3em;
+  box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.1);
+}
+
+#score-board {
+  display: flex;
+  justify-content: center;
+  padding: 1em 2.5em;
+  margin-top: 6vh;
+  border-radius: 1em;
+  width: 32vw;
+
+  background: #f3d0ba;
+  box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.1);
+}
+
+.score {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  height: 100%;
+  width: 100%;
+
+  text-align: center;
+  gap: 0.75em;
+}
+
+.score:nth-child(1) {
+  margin-right: 2.5em;
+}
+
+.score:nth-child(3) {
+  margin-left: 2.5em;
+}
+
+.score div:nth-child(1) {
+  font-size: 1.75em;
+}
+
+.score div:nth-child(2) {
+  font-size: 4em;
+}
+
+#line {
+  margin: 14px 0px;
+  height: 13vh;
+  width: 2px;
+  flex-shrink: 0;
+
+  background-color: black;
+}
+
+#round-result {
+  font-size: 1.75em;
+  font-weight: 300;
+
+  margin: 5vh 0;
+}
+
+.win {
+  color: #5fd536;
+}
+
+.lose {
+  color: #c23535;
+}
+
+.draw {
+  color: #469fe0;
+}
+
+#elements {
+  display: flex;
+  justify-content: space-around;
+  gap: 1em;
+
+  width: 35vw;
+  height: 13vh;
+}
+
+button {
+  display: flex;
+  flex-direction: column;
+  gap: 1vh;
+  align-items: center;
+  justify-content: center;
+
+  height: 14.5vh;
+  width: 14.5vh;
+  border-radius: 1em;
+
+  font-size: 1em;
+  background-color: #d7eeff;
+  border-style: none;
+  box-shadow: 0px 4px 5px rgba(0, 0, 0, 0.1);
+}
+
+button:hover {
+  box-sizing: border-box;
+  border: solid #88a9ff 0.25em;
+}
+
+/* click button */
+button:active {
+  background-color: #c4e5ff;
+  box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.1);
+}
+
+#restart{
+  height: 1.75em;
+  width: auto;
+  padding: 0.5em;
+  border-radius: 0.5em;
+
+  background-color: #cbe9ff;
+  font-size: 0.75em;
+
+}
+
+#elements img {
+  height: 8vh;
+  width: auto;
+}
+
+#footer {
+  width: 100vw;
+  height: 13vh;
+
+  background-color: #d1ebd8;
+  /* bottom: 0; */
+}
+
+#footer,
+#footer > a {
+  display: flex;
+  flex-shrink: 0;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  text-decoration: none;
+
+  color: #60a979;
+}
