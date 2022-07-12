@@ -1,0 +1,24 @@
+.board{
+    width: 50vh;
+    height: 50vh;
+    display: flex;
+    border: solid 1px gray;
+}
+
+.cell-col{
+    display:flex;
+    padding: auto;
+    flex-direction: column;
+    flex: 1;
+}
+
+.cell-row{
+    display:flex;
+    flex: 1;
+    border: solid 1px darkgray;
+    padding:auto;
+}
+
+.change{
+    background-color: gray;
+}
