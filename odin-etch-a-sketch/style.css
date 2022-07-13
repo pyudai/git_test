@@ -1,24 +1,33 @@
-.board{
-    width: 50vh;
-    height: 50vh;
-    display: flex;
-    border: solid 1px gray;
+body {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
 }
 
-.cell-col{
-    display:flex;
-    padding: auto;
-    flex-direction: column;
-    flex: 1;
+.board {
+  width: 50vh;
+  height: 50vh;
+  display: flex;
+  border: solid 1px gray;
 }
 
-.cell-row{
-    display:flex;
-    flex: 1;
-    border: solid 1px darkgray;
-    padding:auto;
+.cell-col {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  padding: auto;
 }
 
-.change{
-    background-color: gray;
+.cell-row {
+  display: flex;
+  flex: 1;
+  /* border: solid 1px darkgray; */
+  padding: auto;
+}
+
+.change {
+  background-color: gray;
 }
