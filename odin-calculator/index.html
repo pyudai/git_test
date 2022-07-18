@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>Calculator</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="style.css">
+        <script src="script.js" async defer></script>
+    </head>
+    <body>
+        <div id="result"></div>
+        <div id="btn-container">
+            <div id="number-container">
+                <button onclick="getInput(this)">1</button>
+                <button onclick="getInput(this)">2</button>
+                <button onclick="getInput(this)">3</button>
+                <button onclick="getInput(this)">4</button>
+                <button onclick="getInput(this)">5</button>
+                <button onclick="getInput(this)">6</button>
+                <button onclick="getInput(this)">7</button>
+                <button onclick="getInput(this)">8</button>
+                <button onclick="getInput(this)">9</button>
+                <button onclick="getInput(this)">()</button>
+                <button onclick="getInput(this)">0</button>
+                <button onclick="getResult()">=</button>
+            </div>
+            <div id="operate-container">
+                <button onclick="clearResult()">AC</button>
+                <button onclick="getInput(this)">/</button>
+                <button onclick="getInput(this)">*</button>
+                <button onclick="getInput(this)">-</button>
+                <button onclick="getInput(this)">+</button>
+            </div>
+        </div>
+        
+    </body>
+</html>

@@ -1,0 +1,45 @@
+* {
+  font-size: 52px;
+}
+
+body {
+  padding: 0;
+  margin: 0;
+  height: 100vh;
+  width: 100vw;
+}
+
+body,
+#operate-container {
+  display: flex;
+  flex-direction: column;
+}
+
+#result {
+  flex: 2 0 1;
+  padding: 5vw;
+  height: 8vh;
+
+  display: flex;
+  justify-content: end;
+  align-items: center;
+  background-color: gainsboro;
+}
+
+#btn-container {
+  flex: 8 0 0;
+  display: flex;
+}
+
+#number-container {
+  flex: 3;
+  display: grid;
+  grid-template-columns: auto auto auto;
+  grid-template-rows: auto auto auto auto;
+}
+
+#operate-container {
+  flex: 1;
+  display: grid;
+  grid-auto-rows: auto;
+}
