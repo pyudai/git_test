@@ -1,4 +1,5 @@
-let parenthesesCount = 0;
+let parenthesesCount = [0, 0];
+const isNum = (x) => typeof Number(x) === "number" && isFinite(Number(x));
 
 const add = (x, y) => Number(x) + Number(y);
 const subtract = (x, y) => Number(x) - Number(y);
@@ -33,19 +34,37 @@ function getInput(btn) {
   let text = "";
 
   if (
-    btn.textContent === "0" &&
-    result.textContent.split(" ")[result.textContent.split(" ").length - 1]
-      .length === 0
+    isNum(btn.textContent) &&
+    result.textContent.split(" ")[result.textContent.split(" ").length - 1] ===
+      "0"
   ) {
-    text = "";
-  } else if (btn.textContent.match(/[()]/g)) {
-    if (parenthesesCount % 2) {
+    result.textContent = result.textContent.slice(
+      0,
+      result.textContent.length - 1
+    );
+  }
+
+  if (!!result.textContent.match(/Wrong Input!/)) {
+    result.textContent = "";
+  }
+
+  if (!!btn.textContent.match(/DEL/)) {
+    result.textContent = result.textContent.slice(
+      0,
+      result.textContent.length - 1
+    );
+    return;
+  }
+
+  if (btn.textContent.match(/[()]/g)) {
+    if (btn.textContent.match(/[)]/g)) {
       text = " )";
+      parenthesesCount[1]++;
     } else {
       text = "( ";
+      parenthesesCount[0]++;
     }
-    parenthesesCount++;
-  } else if (btn.textContent.match(/[0-9]/g)) {
+  } else if (isNum(btn.textContent) || btn.textContent === ".") {
     text = btn.textContent;
   } else {
     text = ` ${btn.textContent} `;
@@ -56,57 +75,80 @@ function getInput(btn) {
 
 function checkInput(arr) {
   let temp;
-  for (let i = 0; i < arr.length - 1; i++) {
+
+  if (arr.length <= 2 || (!isNum(arr[arr.length - 1]) && arr[arr.length - 1]!==')')) return null;
+
+  for (let i = 0; i < arr.length - 2; i++) {
     if (arr[i].match(/[(]/) && arr[i].match(/[0-9]/)) {
+      // find number /w '('
       temp = arr[i].slice(0, arr[i].length - 1);
       arr.splice(i, 1, temp, "*", "(");
     }
 
     if (arr[i].match(/[)]/) && arr[i].match(/[0-9]/)) {
+      // find number /w ')'
       temp = arr[i].slice(1);
       arr.splice(i, 1, ")", "*", temp);
     }
     if (
-      !arr[i].match(/[0-9]/) &&
+      !isNum(arr[i]) &&
       arr[i + 1] === "" &&
-      !arr[i + 2].match(/[0-9]/)
+      !isNum(arr[i + 2]) &&
+      i + 2 < arr.length - 1
     ) {
-      return false;
+      return null;
     }
   }
-
-  if (!(parenthesesCount % 2)) {
-    parenthesesCount = 0;
-    return false;
+  if (parenthesesCount[0] !== parenthesesCount[1]) {
+    return null;
   }
-
+  
   return arr;
 }
 
 function infix2Postfix(arr) {
-  if (checkInput(arr)) arr = checkInput(arr);
-  else return null;
+  arr = checkInput(arr);
+  if (!arr) return arr;
 
   let outputStk = [];
   let operatorStk = [];
 
   for (let i in arr) {
-    if (arr[i].match(/[0-9]/g)) {
+    if (isNum(arr[i])) {
+      // If the character is an operand, put it into output stack.
       outputStk.push(arr[i]);
-    } else if (arr[i].match(/[^0-9]/g) && operatorStk.length === 0) {
+    } else if (isNum(arr[i]) && operatorStk.length === 0) {
+      /* If the character is an operator and operator's stack is empty, */
+      /* push operator into operators' stack.                           */
       operatorStk.push(arr[i]);
     } else {
-      if (
+      if (arr[i].match(/[(]/)) {
+        // If the character is opening round bracket, push it into operator's stack.
+        operatorStk.push(arr[i]);
+      } else if (arr[i].match(/[)]/)) {
+        /* If the character is closing round bracket,                                 */
+        /* pop out operators from operator's stack untill we find an opening bracket. */
+        for (
+          let j = operatorStk.length - 1;
+          !operatorStk[j].match(/[(]/);
+          j--
+        ) {
+          outputStk.push(operatorStk.pop());
+        }
+        operatorStk.pop(); // pop '(' out
+      } else if (
         getOperatorRank(arr[i]) >
-          getOperatorRank(operatorStk[operatorStk.length - 1]) &&
-        !arr[i].match(/[(,)]/)
+        getOperatorRank(operatorStk[operatorStk.length - 1])
       ) {
+        // If the precedence of scanned operator is greater than the top most operator of operator's stack,
+        // push this operator into operator's stack.
         operatorStk.push(arr[i]);
       } else if (
         getOperatorRank(arr[i]) <=
-          getOperatorRank(operatorStk[operatorStk.length - 1]) &&
-        !arr[i].match(/[(,)]/)
+        getOperatorRank(operatorStk[operatorStk.length - 1])
       ) {
+        // If the precedence of scanned operator is less than or equal to the top most operator of operator's stack,
+        // pop the operators from operand's stack untill we find a low precedence operator than the scanned character.
         if (!operatorStk[operatorStk.length - 1].match(/[(]/)) {
           for (
             let j = operatorStk.length - 1;
@@ -114,30 +156,14 @@ function infix2Postfix(arr) {
             j--
           ) {
             outputStk.push(operatorStk.pop());
-            if (j < 0) {
-              break;
-            }
           }
         }
         operatorStk.push(arr[i]);
-      } else if (arr[i].match(/[(]/)) {
-        operatorStk.push(arr[i]);
-      } else if (arr[i].match(/[)]/)) {
-        for (
-          let j = operatorStk.length - 1;
-          !operatorStk[j].match(/[(]/);
-          j--
-        ) {
-          outputStk.push(operatorStk.pop());
-          if (j < 0) {
-            break;
-          }
-        }
-        operatorStk.pop();
       }
     }
   }
 
+  // pop out all the remaining operators from the operator's stack and push into output stack.
   while (operatorStk.length > 0) {
     outputStk.push(operatorStk.pop());
   }
@@ -156,18 +182,24 @@ function calPostfix(arr) {
       resultStk.push(operate(operator, x, y));
     }
   }
-  return resultStk[0];
+  return isNum(resultStk[0]) ? resultStk[0] : null;
 }
 
 function clearResult() {
   document.querySelector("#result").textContent = "";
-  parenthesesCount = 0;
+  parenthesesCount = [0, 0];
 }
 
 function getResult() {
   const str = document.querySelector("#result");
   let prob = str.textContent.trim().split(" ");
+  let temp = "";
 
   prob = infix2Postfix(prob);
-  str.textContent = prob ? calPostfix(prob) : "Wrong Input!";
+
+  if (prob) temp = calPostfix(prob);
+
+  str.textContent =
+    prob && temp ? Math.round(Number(temp) * 1000) / 1000 : "Wrong Input!";
+  parenthesesCount = [0, 0];
 }

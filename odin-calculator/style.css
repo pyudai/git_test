@@ -23,7 +23,7 @@ body,
   display: flex;
   justify-content: end;
   align-items: center;
-  background-color: gainsboro;
+  background-color: rgb(231, 231, 231);
 }
 
 #btn-container {
@@ -34,12 +34,35 @@ body,
 #number-container {
   flex: 3;
   display: grid;
-  grid-template-columns: auto auto auto;
-  grid-template-rows: auto auto auto auto;
+  grid-template-columns: 25vw 25vw 25vw;
+  grid-template-rows: auto auto auto auto auto;
 }
 
 #operate-container {
   flex: 1;
   display: grid;
   grid-auto-rows: auto;
+}
+
+button {
+  color: whitesmoke;
+}
+
+#number-container > button {
+  background-color: rgb(55, 55, 55);
+}
+
+#operate-container > button,
+#number-container > button:nth-child(1),
+#number-container > button:nth-child(2) {
+  background-color: rgb(158, 158, 158);
+}
+
+#number-container > button:nth-child(3),
+#operate-container > button:first-child {
+  background-color: orange;
+}
+
+#number-container > button:last-child {
+  background-color: rgb(119, 171, 255);
 }
