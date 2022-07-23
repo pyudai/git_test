@@ -29,12 +29,14 @@ function getOperatorRank(operator) {
     : null;
 }
 
-function getInput(btn) {
+function getInput(input, isBtn) {
   const result = document.querySelector("#result");
   let text = "";
 
+  input = isBtn ? input.textContent : input;
+
   if (
-    isNum(btn.textContent) &&
+    isNum(input) &&
     result.textContent.split(" ")[result.textContent.split(" ").length - 1] ===
       "0"
   ) {
@@ -48,7 +50,7 @@ function getInput(btn) {
     result.textContent = "";
   }
 
-  if (!!btn.textContent.match(/DEL/)) {
+  if (!!input.match(/DEL/) || !!input.match(/Backspace/)) {
     result.textContent = result.textContent.slice(
       0,
       result.textContent.length - 1
@@ -56,18 +58,18 @@ function getInput(btn) {
     return;
   }
 
-  if (btn.textContent.match(/[()]/g)) {
-    if (btn.textContent.match(/[)]/g)) {
+  if (input.match(/[()]/g)) {
+    if (input.match(/[)]/g)) {
       text = " )";
       parenthesesCount[1]++;
     } else {
       text = "( ";
       parenthesesCount[0]++;
     }
-  } else if (isNum(btn.textContent) || btn.textContent === ".") {
-    text = btn.textContent;
+  } else if (isNum(input) || input === ".") {
+    text = input;
   } else {
-    text = ` ${btn.textContent} `;
+    text = ` ${input} `;
   }
 
   result.textContent += text;
@@ -76,7 +78,11 @@ function getInput(btn) {
 function checkInput(arr) {
   let temp;
 
-  if (arr.length <= 2 || (!isNum(arr[arr.length - 1]) && arr[arr.length - 1]!==')')) return null;
+  if (
+    arr.length <= 2 ||
+    (!isNum(arr[arr.length - 1]) && arr[arr.length - 1] !== ")")
+  )
+    return null;
 
   for (let i = 0; i < arr.length - 2; i++) {
     if (arr[i].match(/[(]/) && arr[i].match(/[0-9]/)) {
@@ -102,7 +108,7 @@ function checkInput(arr) {
   if (parenthesesCount[0] !== parenthesesCount[1]) {
     return null;
   }
-  
+
   return arr;
 }
 
@@ -175,7 +181,7 @@ function calPostfix(arr) {
   let resultStk = [];
   for (let i in arr) {
     resultStk.push(arr[i]);
-    if (arr[i].match(/[^0-9]/g)) {
+    if (!isNum(arr[i])) {
       const operator = resultStk.pop();
       const y = resultStk.pop();
       const x = resultStk.pop();
@@ -194,12 +200,37 @@ function getResult() {
   const str = document.querySelector("#result");
   let prob = str.textContent.trim().split(" ");
   let temp = "";
-
   prob = infix2Postfix(prob);
 
   if (prob) temp = calPostfix(prob);
 
   str.textContent =
-    prob && temp ? Math.round(Number(temp) * 1000) / 1000 : "Wrong Input!";
+    prob && isNum(temp)
+      ? Math.round(Number(temp) * 1000) / 1000
+      : "Wrong Input!";
   parenthesesCount = [0, 0];
 }
+
+function isKInput(key) {
+  return (
+    isNum(key) ||
+    key === "+" ||
+    key === "-" ||
+    key === "*" ||
+    key === "/" ||
+    key === "." ||
+    key === "=" ||
+    key.match(/[()]/) ||
+    key === "Backspace"
+  );
+}
+
+function getKeyBoardInput(e) {
+  if (!isKInput(e.key)) return;
+  if (e.key === "=") getResult();
+  else {
+    getInput(e.key, false);
+  }
+}
+
+window.addEventListener("keydown", getKeyBoardInput);
