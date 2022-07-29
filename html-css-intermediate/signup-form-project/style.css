@@ -1,0 +1,171 @@
+@import url("http://fonts.cdnfonts.com/css/norse");
+
+:root {
+  --left-container-padding: 48px;
+  --button-gap: 28px;
+}
+
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  height: 100vh;
+  width: 100vw;
+}
+
+.container.right {
+  flex: 3;
+}
+
+.container.left {
+  flex: 2;
+  display: flex;
+  position: relative;
+  background-image: url("./img/bg.jpeg");
+  background-size: cover;
+  font-size: small;
+
+  justify-content: center;
+  align-items: flex-end;
+  padding: 1%;
+}
+
+.container.left > div:nth-child(2) {
+  text-align: 1rem;
+  color: gainsboro;
+}
+
+.container.left a {
+  color: gainsboro;
+}
+
+.logo {
+  display: flex;
+  position: absolute;
+  top: 20%;
+  height: 16vh;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+
+  background-color: rgba(0, 0, 0, 0.5);
+  color: white;
+  font-family: "Norse";
+  font-size: 5rem;
+  font-weight: 600;
+}
+
+.logo > img {
+  height: 80%;
+}
+
+.container.right > .text {
+  height: calc(33vh - 40px);
+  display: flex;
+  align-items: flex-end;
+  padding-left: var(--left-container-padding);
+  padding-right: calc(var(--left-container-padding) * 3);
+  padding-bottom: 40px;
+}
+
+form {
+  height: calc(100vh - 33vh);
+  display: flex;
+  flex-direction: column;
+  gap: var(--button-gap);
+}
+
+.fieldset {
+  display: grid;
+  grid-template: 55px 55px 55px / 30% 30%;
+  gap: 10px 50px;
+  padding: 24px var(--left-container-padding);
+  padding-top: 70px;
+  box-shadow: 0px 2px 5px rgb(189, 189, 189);
+  /* border: solid gray 1px; */
+  width: 100%;
+  height: calc(40% - 70px + 36px);
+
+  position: relative;
+}
+
+.text,
+.legend {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: rgb(30, 30, 30);
+}
+
+.legend {
+  position: absolute;
+  top: 8%;
+  left: var(--left-container-padding);
+}
+
+.form-field {
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  /* border: black solid 1px; */
+}
+
+label {
+  text-transform: uppercase;
+  font-size: 0.65rem;
+  font-weight: 600;
+  letter-spacing: 1px;
+  color: rgb(85, 85, 85);
+}
+
+.footer {
+  padding: 0 var(--left-container-padding);
+}
+
+.footer button {
+  margin-bottom: var(--button-gap);
+}
+
+button {
+  width: 200px;
+  height: 45px;
+
+  border-style: none;
+  border-radius: 8px;
+
+  background-color: #596d48;
+  color: whitesmoke;
+  font-weight: 600;
+  font-size: 0.95rem;
+  box-shadow: 1px 3px 5px rgb(173, 173, 173);
+
+  transition: ease-in-out;
+  transform: translate(0, 0);
+}
+
+button:active {
+  transform: translate(1px, 1px);
+  box-shadow: 0px 2px 5px rgb(173, 173, 173);
+}
+
+.login a {
+  text-decoration: none;
+  font-weight: 600;
+  color: #596d48;
+}
+
+input {
+  border: solid #e5e7eb;
+  border-radius: 5px;
+
+  height: 25px;
+  padding: 1px 8px;
+}
+
+input:focus {
+  box-shadow: 1px 1px 5px rgb(173, 173, 173);
+}
+
+.error {
+  border-color: red;
+}
