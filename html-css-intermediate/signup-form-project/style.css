@@ -83,7 +83,6 @@ form {
   padding: 24px var(--left-container-padding);
   padding-top: 70px;
   box-shadow: 0px 2px 5px rgb(189, 189, 189);
-  /* border: solid gray 1px; */
   width: 100%;
   height: calc(40% - 70px + 36px);
 
@@ -107,7 +106,6 @@ form {
   display: flex;
   flex-direction: column;
   justify-content: start;
-  /* border: black solid 1px; */
 }
 
 label {
