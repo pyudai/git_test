@@ -9,7 +9,16 @@
   --slate50: #f8fafc;
   --slate50fill: invert(92%) sepia(17%) saturate(937%) hue-rotate(186deg)
     brightness(110%) contrast(97%);
+  --slate200: #e2e8f0;
+  --slate800fill: invert(9%) sepia(8%) saturate(5942%) hue-rotate(184deg)
+    brightness(88%) contrast(83%);
   --sky600: #0284c7;
+
+  --larger: 24px;
+  --large: 20px;
+  --medium: 18px;
+  --small: 15px;
+  --smaller: 14px;
 }
 
 body {
@@ -20,6 +29,11 @@ body {
   grid-template-columns: 280px auto;
   grid-template-rows: 150px auto;
 }
+
+/* test */
+/* .header div {
+  border: 1px solid gray;
+} */
 
 .sidebar {
   grid-row: 1 / 3;
@@ -42,7 +56,7 @@ img {
 }
 
 .brand > div {
-  font-size: 24px;
+  font-size: var(--larger);
   font-weight: 500;
 
   color: var(--slate50);
@@ -54,7 +68,7 @@ a {
 }
 
 a > div {
-  font-size: 20px;
+  font-size: var(--medium);
   font-weight: 500;
 
   color: var(--slate50);
@@ -73,4 +87,238 @@ a > img {
   gap: 8px;
 
   align-items: center;
+}
+
+.header {
+  position: relative;
+  display: grid;
+  grid-template-rows: 2fr 4fr;
+
+  gap: 8px;
+  padding: 8px 0;
+}
+
+.header::after {
+  position: absolute;
+  z-index: -1;
+
+  content: "";
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  box-shadow: 0px 0 8px grey;
+}
+
+.header > div {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  padding: 0 32px;
+}
+
+.header img {
+  height: 24px;
+}
+
+.user .username {
+  font-size: var(--medium);
+  font-weight: 500;
+}
+
+.search-bar {
+  width: 55%;
+
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.search-bar > input {
+  width: calc(100% - 24px - 16px);
+  height: 26px;
+
+  border: none;
+  border-radius: 12px;
+
+  background-color: var(--slate200);
+}
+
+.user {
+  display: flex;
+  align-items: center;
+  justify-content: end;
+  gap: 16px;
+}
+
+.user > .profile-pic {
+  height: 48px;
+}
+
+.user-info {
+  display: grid;
+  grid-template-columns: 64px 400px;
+  grid-template-rows: 5fr 6fr;
+  gap: 5px 10px;
+
+  height: 75%;
+
+  justify-items: left;
+}
+
+.user-info > img {
+  grid-row: 1 / 3;
+  height: 64px;
+}
+
+.user-info > div:nth-child(2) {
+  font-size: var(--smaller);
+  font-weight: 500;
+
+  align-self: end;
+}
+
+.user-info .username {
+  font-size: var(--large);
+  font-weight: 500;
+
+  align-self: start;
+}
+
+.header .btn-container {
+  width: 30vw;
+
+  display: flex;
+  gap: 32px;
+  justify-content: end;
+}
+
+.header button {
+  border: none;
+  border-radius: 24px;
+  padding: 8px 16px;
+  width: 100px;
+
+  background-color: var(--sky600);
+  color: var(--slate50);
+  font-size: var(--small);
+  font-weight: 500;
+}
+
+.profile-pic {
+  filter: invert(86%) sepia(20%) saturate(2643%) hue-rotate(336deg)
+    brightness(101%) contrast(102%);
+}
+
+.main {
+  display: grid;
+  grid-template-columns: 10fr 4fr;
+  grid-template-rows: 1fr 1fr;
+  gap: 24px;
+  padding: 24px;
+
+  background-color: var(--slate200);
+}
+
+.projects {
+  grid-row: 1 / 3;
+
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  grid-template-rows: repeat(3, 1fr);
+
+  gap: 32px;
+}
+
+.projects,
+.annoucements,
+.trending {
+  position: relative;
+  padding: 48px 0 0 0;
+}
+
+.projects::before,
+.annoucements::before,
+.trending::before {
+  position: absolute;
+  top: 16px;
+  font-size: var(--medium);
+  font-weight: 500;
+}
+
+.projects::before {
+  content: "Your Projects";
+}
+
+.annoucements::before {
+  content: "Annoucements";
+}
+
+.trending::before {
+  content: "Trendings";
+}
+
+.item {
+  position: relative;
+  padding: 32px;
+  border-radius: 8px;
+
+  background-color: var(--slate50);
+  box-shadow: 1px 1px 5px lightgrey;
+}
+
+.card::before {
+  position: absolute;
+  left: 0;
+  top: 0;
+
+  content: "";
+  height: 100%;
+  border-left: 8px solid #fbbf24;
+  border-radius: 8px 0 0 8px;
+}
+
+.card .topic {
+  font-size: var(--medium);
+  font-weight: 500;
+  padding-bottom: 4px;
+}
+
+.card .description {
+  font-size: var(--small);
+  color: gray;
+
+}
+
+.main .btn-container {
+  position: absolute;
+  bottom: 32px;
+  right: 32px;
+
+  display: flex;
+  gap: 28px;
+  justify-content: center;
+  align-items: center;
+}
+
+.main button {
+  height: var(--larger);
+  width: var(--larger);
+
+  border: none;
+  background-color: transparent;
+}
+
+.main button img {
+  width: 100%;
+  height: auto;
+  
+  filter: var(--slate800fill);
+}
+
+.annoucements > .item,
+.trending > .item {
+  width: auto;
+  height: calc(100% - 64px);
 }
