@@ -40,7 +40,7 @@ body {
   padding: 16px;
 
   display: grid;
-  grid-template-rows: 48px 6fr 3fr 10fr;
+  grid-template-rows: 48px 6fr 3fr 20fr;
   gap: 32px;
 
   background-color: var(--sky600);
@@ -226,7 +226,7 @@ a > img {
 
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  grid-template-rows: repeat(3, 1fr);
+  grid-template-rows: repeat(auto-fill, minmax(200px, 1fr));
 
   gap: 32px;
 }
@@ -259,7 +259,8 @@ a > img {
   content: "Trendings";
 }
 
-.item {
+.item,
+.container {
   position: relative;
   padding: 32px;
   border-radius: 8px;
@@ -279,16 +280,33 @@ a > img {
   border-radius: 8px 0 0 8px;
 }
 
+.topic {
+  font-weight: 500;
+}
+
+.description {
+  display: inline-block;
+  color: gray;
+  overflow: hidden;
+}
+
 .card .topic {
   font-size: var(--medium);
-  font-weight: 500;
   padding-bottom: 4px;
 }
 
 .card .description {
   font-size: var(--small);
-  color: gray;
+  height: 72px;
+}
 
+.annouce .topic {
+  font-size: var(--small);
+}
+
+.annouce .description {
+  font-size: var(--smaller);
+  height: 50px;
 }
 
 .main .btn-container {
@@ -313,12 +331,60 @@ a > img {
 .main button img {
   width: 100%;
   height: auto;
-  
+
   filter: var(--slate800fill);
 }
 
-.annoucements > .item,
-.trending > .item {
+.annoucements > .container,
+.trending > .container {
   width: auto;
   height: calc(100% - 64px);
+}
+
+.annoucements > .container {
+  display: grid;
+  grid-template-rows: repeat(auto-fill, minmax(80px, 1fr));
+  gap: 18px;
+}
+
+.annouce {
+  padding: 0 8px;
+  height: 80px;
+  border-bottom: solid gray 1px;
+}
+
+.annouce:last-child {
+  border: none;
+}
+
+.trending > .container {
+  display: grid;
+  grid-template-rows: repeat(auto-fill, 48px);
+  gap: 32px;
+}
+
+.acc {
+  display: grid;
+  grid-template-columns: 48px 1fr;
+  grid-template-rows: 1fr 1fr;
+  gap: 5px 10px;
+
+  height: 48px;
+  justify-items: left;
+  
+  font-size: var(--small);
+}
+
+.acc img {
+  grid-row: 1/3;
+  height: 48px;
+  width: auto;
+}
+
+.acc .username {
+  align-self: end;
+}
+
+.acc .description {
+  align-self: start;
 }
